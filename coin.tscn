@@ -1,0 +1,65 @@
+[gd_scene format=3 uid="uid://bd5bp7wv4y1s5"]
+
+[ext_resource type="Script" uid="uid://3h8y4v58xrwl" path="res://coin_2d.gd" id="1_0t63x"]
+[ext_resource type="Texture2D" uid="uid://uc12bc448jog" path="res://Textures/coin.png" id="1_d5gmh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ch0rw"]
+
+[sub_resource type="Animation" id="Animation_d5gmh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0t63x"]
+resource_name = "coin"
+length = 0.6
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D/Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.19999999, 0.3, 0.39999998, 0.49999997, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 3, 4, 5, 6, 6]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7riw"]
+_data = {
+&"RESET": SubResource("Animation_d5gmh"),
+&"coin": SubResource("Animation_0t63x")
+}
+
+[node name="coin" type="Node2D" unique_id=459021859]
+
+[node name="coin2D" type="Area2D" parent="." unique_id=209562432]
+script = ExtResource("1_0t63x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin2D" unique_id=623182618]
+shape = SubResource("CircleShape2D_ch0rw")
+
+[node name="Sprite2D" type="Sprite2D" parent="coin2D/CollisionShape2D" unique_id=1494724337]
+position = Vector2(2.9802322e-08, 0)
+scale = Vector2(1.5625001, 1.5)
+texture = ExtResource("1_d5gmh")
+hframes = 12
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="coin2D" unique_id=1353158330]
+libraries/ = SubResource("AnimationLibrary_v7riw")
+autoplay = &"coin"
+
+[connection signal="body_entered" from="coin2D" to="coin2D" method="_on_body_entered"]
