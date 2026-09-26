@@ -4,5 +4,5 @@ you can play this gam in itch.io, you need search my profile @yisus31820 or entr
 https://yisus31820-source.itch.io/jack-plus-moreless
 Enjoy this game was made with love and all family can play!
 the game control are very simple, WASD for move and try to dont fall in the grass.
-This all for the moment,Thanks and enjoy!!!
+This all for the moment,Thanks and enjoy it!!!
 The best way to predict the future is made it!!! its up to you
